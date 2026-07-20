@@ -7,7 +7,7 @@ branding:
 
 inputs:
   github-token:
-    description: 'Token used to post the PR comment. Pass ${{ secrets.GITHUB_TOKEN }} explicitly in your workflow.'
+    description: 'Token used to post the PR comment. Pass secrets.GITHUB_TOKEN explicitly in your workflow (see README for the exact syntax).'
     required: true
   skip-checks:
     description: 'Comma-separated list of check ids to skip (e.g. "security-policy,code-of-conduct")'
