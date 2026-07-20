@@ -1,0 +1,31 @@
+name: 'Project Health Score'
+description: 'Analyzes a repository against best-practice checks and generates a health score with a PR comment and job summary'
+author: 'RohitS456'
+branding:
+  icon: 'activity'
+  color: 'green'
+
+inputs:
+  github-token:
+    description: 'Token used to post the PR comment. Pass ${{ secrets.GITHUB_TOKEN }} explicitly in your workflow.'
+    required: true
+  skip-checks:
+    description: 'Comma-separated list of check ids to skip (e.g. "security-policy,code-of-conduct")'
+    required: false
+    default: ''
+  post-comment:
+    description: 'Whether to post a PR comment with the report (true/false)'
+    required: false
+    default: 'true'
+
+outputs:
+  score:
+    description: 'The overall health score (0-100)'
+  passed-count:
+    description: 'Number of checks passed'
+  total-count:
+    description: 'Total number of checks run (after skip-checks is applied)'
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

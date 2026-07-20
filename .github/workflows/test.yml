@@ -1,0 +1,20 @@
+name: Test Health Score
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run Project Health Score (self-test)
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
